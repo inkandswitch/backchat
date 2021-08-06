@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react/macro';
 import { Link } from 'wouter';
+import Backchannel from '../backchannel';
 
-import config from '../backend/config';
+import config from '../config';
 import {
   Button,
   Instructions,
@@ -15,7 +16,6 @@ import {
 } from '.';
 import * as storage from './storage';
 import { Page, ContentWithTopNav } from './';
-import Backchannel from '../backend';
 import { ReactComponent as PlusSmall } from '../components/icons/PlusSmall.svg';
 import { ReactComponent as CloudCrossedSmall } from '../components/icons/CloudCrossedSmall.svg';
 import { ReactComponent as CloudCycleSmall } from '../components/icons/CloudCycleSmall.svg';

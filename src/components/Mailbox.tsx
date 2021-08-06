@@ -8,17 +8,18 @@ import {
   ContactId,
   MessageType,
   FileMessage,
-} from '../backend/types';
+  FileProgress,
+  EVENTS,
+} from 'backchannel';
 import { Button, Spinner, TopBar, UnderlineInput } from './';
-import Backchannel, { EVENTS } from '../backend';
 import { color, fontSize } from './tokens';
 import { timestampToDate } from './util';
 import { Instructions } from '.';
-import { FileProgress } from '../backend/blobs';
 import { ReactComponent as Dots } from './icons/Dots.svg';
 import { ReactComponent as Paperclip } from './icons/Paperclip.svg';
 import { ReactComponent as Paperplane } from './icons/Paperplane.svg';
 import TopBarNickname from './TopBarNickname';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 const PADDING_CHAT = 12;
@@ -65,10 +66,11 @@ export default function Mailbox(props: Props) {
     }
 
     let subscribeToConnections = () => {
-      let messages = backchannel.getMessagesByContactId(contactId);
-      setMessages(messages);
-      backchannel.on(EVENTS.CONTACT_CONNECTED, onContact);
-      backchannel.on(EVENTS.CONTACT_DISCONNECTED, onContactDisconnected);
+      backchannel.getMessagesByContactId(contactId).then(messages => {
+        setMessages(messages);
+        backchannel.on(EVENTS.CONTACT_CONNECTED, onContact);
+        backchannel.on(EVENTS.CONTACT_DISCONNECTED, onContactDisconnected);
+      })
     };
 
     subscribeToConnections();
@@ -84,8 +86,7 @@ export default function Mailbox(props: Props) {
 
   useEffect(() => {
     function refreshMessages() {
-      let messages = backchannel.getMessagesByContactId(contactId);
-      setMessages(messages);
+      backchannel.getMessagesByContactId(contactId).then(setMessages);
     }
 
     let onMessage = ({ docId }) => {

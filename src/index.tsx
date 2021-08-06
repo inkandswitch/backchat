@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
-import Backchannel, { EVENTS } from './backend';
+import { EVENTS } from 'backchannel';
 import { forceScreenSize } from './web';
 import { viewport } from './components/tokens';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import Backchannel from './backchannel'
 
 let backchannel = Backchannel();
 

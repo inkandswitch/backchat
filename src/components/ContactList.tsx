@@ -2,11 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { css } from '@emotion/react/macro';
 import { Link } from 'wouter';
-import Backchannel, { EVENTS } from '../backend';
+import { Mailbox, EVENTS, IMessage } from 'backchannel';
 import { color, fontSize } from './tokens';
-import { IMessage } from '../backend/types';
-import Automerge from 'automerge';
-import { Mailbox } from '../backend/backchannel';
+
+import Backchannel from '../backchannel';
 import { timestampToDate, Nickname } from './util';
 import { BottomNav, Spinner, Page, ContentWithBottomNav } from '../components';
 import { ReactComponent as Plus } from './icons/Plus.svg';
@@ -67,14 +66,7 @@ export default function ContactList(props) {
         }
       }
       contacts.forEach(async (contact) => {
-        let messages = backchannel.getMessagesByContactId(contact.id);
-
-        if (!messages) {
-          let doc = (await backchannel._addContactDocument(
-            contact
-          )) as Automerge.Doc<Mailbox>;
-          messages = doc.messages;
-        }
+        let messages = await backchannel.getMessagesByContactId(contact.id);
         const lastMessage: IMessage = messages[messages.length - 1];
         setLatestMessages((latestMessages) => ({
           ...latestMessages,

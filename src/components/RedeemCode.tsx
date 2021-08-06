@@ -9,10 +9,10 @@ import CodeView, {
   codeViewAnimation,
   useAnimation,
 } from './CodeView';
-import { CodeType, Key, ContactId } from '../backend/types';
+import { CodeType, Key, ContactId } from 'backchannel';
 import QRReader from './QRReader';
 import { ReactComponent as People } from './icons/People.svg';
-import Backchannel from '../backend';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 

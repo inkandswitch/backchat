@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react/macro';
 
 import { color } from './tokens';
-import Backchannel, { EVENTS, ERROR } from '../backend';
+import { EVENTS, ERROR } from 'backchannel';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 

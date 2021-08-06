@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react/macro';
-import { IContact } from '../backend/types';
+import { IContact } from 'backchannel';
 import { color } from './tokens';
 
 export function timestampToDate(timestamp: string): string {

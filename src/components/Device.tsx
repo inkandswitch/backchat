@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
-import Backchannel, { EVENTS } from '../backend';
+import Backchannel from '../backchannel';
 import { css } from '@emotion/react/macro';
 import { useLocation } from 'wouter';
 
@@ -13,7 +13,7 @@ import {
   TopBar,
   IconWithMessage,
 } from '.';
-import { ContactId, MessageType } from '../backend/types';
+import { EVENTS, ContactId, MessageType } from 'backchannel';
 import { ReactComponent as Checkmark } from './icons/Checkmark.svg';
 import { ContentWithTopNav, SettingsContent } from './index';
 import DeviceCodeView from './DeviceCodeView';
@@ -109,12 +109,13 @@ export function UnlinkDevices() {
   useEffect(() => {
     if (backchannel.devices.length) {
       for (let device of backchannel.devices) {
-        let messages = backchannel.getMessagesByContactId(device.id);
-        let maybe_tombstone = messages.pop();
-        if (maybe_tombstone?.type === MessageType.TOMBSTONE) {
-          setLoading(true);
-          onTombstone(device);
-        }
+        backchannel.getMessagesByContactId(device.id).then(messages => {
+          let maybe_tombstone = messages.pop();
+          if (maybe_tombstone?.type === MessageType.TOMBSTONE) {
+            setLoading(true);
+            onTombstone(device);
+          }
+        });
       }
     }
   }, []);

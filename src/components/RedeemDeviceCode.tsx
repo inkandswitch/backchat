@@ -4,8 +4,8 @@ import { useLocation } from 'wouter';
 
 import { AnimationMode } from './CodeView';
 import DeviceCodeView, { DeviceCodeLoading } from './DeviceCodeView';
-import { Key, ContactId } from '../backend/types';
-import Backchannel from '../backend';
+import { Key, ContactId } from 'backchannel';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 

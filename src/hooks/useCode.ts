@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { Code } from '../backend/types';
+import { Code } from 'backchannel';
 
-import Backchannel from '../backend';
+import Backchannel from '../backchannel';
 import { generateQRCode } from '../web';
 import useCountdown from '../hooks/useCountdown';
 

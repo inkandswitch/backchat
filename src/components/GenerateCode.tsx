@@ -11,9 +11,9 @@ import CodeView, {
   codeViewAnimation,
   useAnimation,
 } from './CodeView';
-import { CodeType, Key, ContactId } from '../backend/types';
+import { CodeType, Key, ContactId } from 'backchannel';
 import { ReactComponent as Copy } from './icons/Copy.svg';
-import Backchannel from '../backend';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 

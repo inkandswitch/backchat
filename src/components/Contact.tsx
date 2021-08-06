@@ -8,8 +8,8 @@ import { UnderlineInput, Toggle, ToggleWrapper, IconButton } from './';
 import { color } from './tokens';
 import CodeView from './CodeView';
 import { ReactComponent as HatPerson } from './icons/HatPerson.svg';
-import { ContactId, IContact } from '../backend/types';
-import Backchannel from '../backend';
+import { ContactId, IContact } from 'backchannel';
+import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
 
