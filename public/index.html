@@ -26,24 +26,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module"> 
-      // TODO: this should be part of the bundle instead and shouldn't be
-      // necessary if we fix the hacks in
-      // okdistribute/magic-wormhole-js on the browser branch
-
-      import init, { start, msg, finish } from '/lib/spake2/spake2_wasm.js';
-
-      window.spake2 = {
-        start,
-        msg, 
-        finish
-      }
-
-      async function run () {
-        await init();
-      }
-      run();
-
-    </script>
+	<script src="./bootstrap.js"></script>
   </body>
 </html>
