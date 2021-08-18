@@ -13,6 +13,7 @@ import { CodeType, Key, ContactId } from 'backchannel';
 import QRReader from './QRReader';
 import { ReactComponent as People } from './icons/People.svg';
 import Backchannel from '../backchannel';
+import { numericCodeToWords } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -45,7 +46,7 @@ export default function RedeemCode() {
         let codeType = backchannel.detectCodeType(code);
 
         if (codeType === CodeType.NUMBERS) {
-          code = backchannel.numericCodeToWords(code);
+          code = numericCodeToWords(code);
         }
         let key: Key = await backchannel.accept(code, 5000);
 

@@ -14,6 +14,7 @@ import CodeView, {
 import { CodeType, Key, ContactId } from 'backchannel';
 import { ReactComponent as Copy } from './icons/Copy.svg';
 import Backchannel from '../backchannel';
+import { getNumericCode } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -127,7 +128,7 @@ export default function GenerateCode() {
 
   function formatCode(code: string, codeType: CodeType): string {
     if (codeType !== CodeType.NUMBERS) return code;
-    code = backchannel.getNumericCode(code);
+    code = getNumericCode(code);
     let formatted = '';
     let spaces = [0, 3, 5, 7];
     for (var i = 0; i < code.length; i++) {

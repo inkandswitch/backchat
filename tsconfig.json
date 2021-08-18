@@ -15,10 +15,11 @@
     "target": "es5",
     "lib": [
       "dom",
+	  "es2015",
       "dom.iterable",
       "esnext"
     ],
-    "module": "esnext",
+    "module": "esNext",
     "noEmit": true,
     "jsxImportSource": "@emotion/react"
   },

@@ -58,11 +58,6 @@
       "react-app/jest"
     ]
   },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(@!localfirst/relay-client)"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
