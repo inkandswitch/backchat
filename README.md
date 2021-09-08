@@ -1,4 +1,4 @@
-# Backchannel
+# Backchat
 
 THIS PROJECT IS STILL IN EARLY DEVELOPMENT. IT HAS NOT HAD ANY KIND OF SECURITY
 OR CRYPTOGRAPHY REVIEW. THIS SOFTWARE MIGHT BE UNSAFE.
@@ -8,12 +8,14 @@ OR CRYPTOGRAPHY REVIEW. THIS SOFTWARE MIGHT BE UNSAFE.
 
 [Try it now!](https://gallant-lewin-1c93b0.netlify.app/)
 
-Backchannel is a cross platform progressive web application combining novel
-out-of-band identity verification techniques with a modernised pet name address book system. 
+Backchat is an end-to-end encrypted instant messenger application that has no accounts, no central identity, and no namespaces. Backchat combines [SPAKE2](https://github.com/okdistribute/spake2-wasm) and [Petname systems](https://www.hpl.hp.com/techreports/2005/HPL-2005-148.pdf). We set out to build a digital identity system for collaborative applications that would:
 
-This prototype will allow two people to chat with high recognition of their recipient. It will satisfy certain
-cases of heightened risk without dramatic configuration or expertise required
-on behalf of network participants.
+* leverage real-world relationships;
+* resist impersonation attacks;
+* adhere to local-first principles;
+* be secure and accessible.
+
+[Read more about Backchat in our paper](https://www.inkandswitch.com/backchannel)
 
 ## Getting started
 
