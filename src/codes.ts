@@ -1,6 +1,14 @@
 import { Code } from 'backchannel';
-import { randomBytes } from 'crypto';
+import randomBytes from 'randombytes';
 import wordlist from './wordlist_en.json'
+
+export function splitCode(code: Code): [string, string] {
+  let sanitizedCode = code.toLowerCase().trim();
+  let parts = sanitizedCode.split(' ');
+  let mailbox = parts.shift();
+  let password = parts.join(' ');
+  return [mailbox, password]
+}
 
 /**
  * Create a one-time code for a new backchannel contact.

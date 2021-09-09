@@ -6,6 +6,7 @@ import { AnimationMode } from './CodeView';
 import DeviceCodeView, { DeviceCodeLoading } from './DeviceCodeView';
 import { Key, ContactId } from 'backchannel';
 import Backchannel from '../backchannel';
+import { splitCode } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -29,7 +30,9 @@ export default function RedeemDeviceCode() {
       if (animationMode === AnimationMode.Connecting) return;
       try {
         setAnimationMode(AnimationMode.Connecting);
-        let key: Key = await backchannel.accept(code);
+
+        let [mailbox, password] = splitCode(code)
+        let key: Key = await backchannel.accept(mailbox, password);
 
         let deviceId: ContactId = await backchannel.addDevice(key);
         setErrorMsg('');

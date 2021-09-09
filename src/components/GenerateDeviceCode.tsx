@@ -8,6 +8,7 @@ import { AnimationMode } from './CodeView';
 import DeviceCodeView, { DeviceCodeLoading } from './DeviceCodeView';
 import { Key, ContactId } from 'backchannel';
 import Backchannel from '../backchannel';
+import { splitCode } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -50,8 +51,9 @@ export default function GenerateDeviceCode() {
       };
 
       try {
+        let [mailbox, password] = splitCode(code)
         let key: Key = await backchannel.accept(
-          code,
+          mailbox, password,
           (CODE_REGENERATE_TIMER_SEC + 2) * 1000 // be permissive, give extra time to redeem after timeout ends
         );
         setAnimationMode(AnimationMode.Connecting);

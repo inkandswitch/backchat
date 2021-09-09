@@ -14,7 +14,7 @@ import CodeView, {
 import { CodeType, Key, ContactId } from 'backchannel';
 import { ReactComponent as Copy } from './icons/Copy.svg';
 import Backchannel from '../backchannel';
-import { getNumericCode } from '../codes'
+import { getNumericCode, splitCode } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -64,8 +64,9 @@ export default function GenerateCode() {
       };
 
       try {
+        let [mailbox, password] = splitCode(code)
         let key: Key = await backchannel.accept(
-          code,
+          mailbox, password,
           (CODE_REGENERATE_TIMER_SEC + 2) * 1000 // be permissive, give extra time to redeem after timeout ends
         );
 

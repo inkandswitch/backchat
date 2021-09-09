@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { css } from '@emotion/react/macro';
 import { Link } from 'wouter';
-import { Mailbox, EVENTS, IMessage } from 'backchannel';
+import { EVENTS, IMessage } from 'backchannel';
 import { color, fontSize } from './tokens';
 
 import Backchannel from '../backchannel';
