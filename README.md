@@ -1,7 +1,7 @@
 # Backchat
 
-THIS PROJECT IS STILL IN EARLY DEVELOPMENT. IT HAS NOT HAD ANY KIND OF SECURITY
-OR CRYPTOGRAPHY REVIEW. THIS SOFTWARE MIGHT BE UNSAFE.
+THIS IS UNSUPPORTED RESEARCH SOFTWARE. IT HAS NOT HAD ANY KIND OF SECURITY
+OR CRYPTOGRAPHY REVIEW. DO NOT ATTEMPT TO USE THIS SOFTWARE TO STORE OR TRANSMIT SENSITIVE INFORMATION.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b91ac61c-abc1-40d0-9563-e05c189190ae/deploy-status)](https://app.netlify.com/sites/gallant-lewin-1c93b0/deploys) [![CI](https://github.com/inkandswitch/backchannel/actions/workflows/ci.yml/badge.svg)](https://github.com/inkandswitch/backchannel/actions)
 
