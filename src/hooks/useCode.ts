@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-
 import { Code } from 'backchannel';
 
-import Backchannel from '../backchannel';
 import { generateQRCode } from '../web';
 import useCountdown from '../hooks/useCountdown';
+import { getWordCode } from '../codes';
 
 type QRCodeImage = string;
-
-let backchannel = Backchannel();
 
 /**
  * Get a connection code and its corresponding QR Code image string. Automatically refreshes every `refreshRateSec` seconds.
@@ -37,32 +34,18 @@ export default function useCode(
       setQRCode('');
       setGeneratingCode(true);
 
-      getCode().then((code) => {
-        setCode(code);
-        setGeneratingCode(false);
-        const url = getReedemURL(redeemUrlPath, code);
-        console.log('REDEEM URL', url);
-        generateQRCode(url).then((qrCode) => setQRCode(qrCode));
-        resetCountdown();
-      });
+      let code = getWordCode()
+      setCode(code);
+      setGeneratingCode(false);
+      const url = getReedemURL(redeemUrlPath, code);
+      console.log('REDEEM URL', url);
+      generateQRCode(url).then((qrCode) => setQRCode(qrCode));
+      resetCountdown();
     }
   }, [code, generatingCode, timeRemaining, resetCountdown, redeemUrlPath]);
 
   return [code, qrCode];
 }
-
-const getCode = async (): Promise<Code> => {
-  try {
-    let code = await backchannel.getCode();
-    return code;
-  } catch (err) {
-    if (err.message.startsWith('This code has expired')) {
-      // TODO differentiate between an actual backend err (which should be displayed) vs the code timing out (which should happen quietly).
-    } else {
-      console.error('got error from backend', err);
-    }
-  }
-};
 
 // `urlPath` should have a leading slash, e.g. `/redeem`
 function getReedemURL(urlPath, code) {

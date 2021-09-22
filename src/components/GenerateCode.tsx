@@ -14,6 +14,7 @@ import CodeView, {
 import { CodeType, Key, ContactId } from 'backchannel';
 import { ReactComponent as Copy } from './icons/Copy.svg';
 import Backchannel from '../backchannel';
+import { getNumericCode, splitCode } from '../codes'
 
 let backchannel = Backchannel();
 
@@ -63,8 +64,9 @@ export default function GenerateCode() {
       };
 
       try {
+        let [mailbox, password] = splitCode(code)
         let key: Key = await backchannel.accept(
-          code,
+          mailbox, password,
           (CODE_REGENERATE_TIMER_SEC + 2) * 1000 // be permissive, give extra time to redeem after timeout ends
         );
 
@@ -127,7 +129,7 @@ export default function GenerateCode() {
 
   function formatCode(code: string, codeType: CodeType): string {
     if (codeType !== CodeType.NUMBERS) return code;
-    code = backchannel.getNumericCode(code);
+    code = getNumericCode(code);
     let formatted = '';
     let spaces = [0, 3, 5, 7];
     for (var i = 0; i < code.length; i++) {
