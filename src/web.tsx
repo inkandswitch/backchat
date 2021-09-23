@@ -7,7 +7,6 @@ import QRCode from 'qrcode';
 export async function copyToClipboard(code: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(code);
-    console.log('Code copied to clipboard');
     return true;
   } catch (err) {
     console.error('Failed to copy: ', err);
@@ -25,7 +24,6 @@ export async function forceScreenSize(width, height) {
   console.log(installedApp);
 
   if (installedApp) {
-    console.log('resizing', width, height);
     window.resizeTo(width, height);
 
     window.addEventListener('resize', () => {

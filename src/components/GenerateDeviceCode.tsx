@@ -6,7 +6,7 @@ import useCode from '../hooks/useCode';
 import { Spinner } from '.';
 import { AnimationMode } from './CodeView';
 import DeviceCodeView, { DeviceCodeLoading } from './DeviceCodeView';
-import { Key, ContactId } from 'backchannel';
+import { Key, ContactId } from '@inkandswitch/backchannel';
 import Backchannel from '../backchannel';
 import { splitCode } from '../codes'
 

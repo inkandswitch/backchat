@@ -12,7 +12,6 @@ export default function InstallButton() {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       event.preventDefault();
 
-      console.log('👍', 'beforeinstallprompt', event);
       // Stash the event so it can be triggered later.
       setDeferredPrompt(event);
     });
@@ -29,7 +28,6 @@ export default function InstallButton() {
     deferredPrompt.prompt();
 
     const result = await deferredPrompt.userChoice;
-    console.log('👍', 'userChoice', result);
 
     setDeferredPrompt(null);
   };

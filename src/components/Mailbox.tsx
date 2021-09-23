@@ -10,7 +10,7 @@ import {
   FileMessage,
   FileProgress,
   EVENTS,
-} from 'backchannel';
+} from '@inkandswitch/backchannel';
 import { Button, Spinner, TopBar, UnderlineInput } from './';
 import { color, fontSize } from './tokens';
 import { timestampToDate } from './util';
@@ -95,6 +95,7 @@ export default function Mailbox(props: Props) {
 
     let onMessagesChanged = (progress: FileProgress) => {
       setProgress({ ...progress, [progress.id]: progress.progress });
+      refreshMessages();
     };
 
     refreshMessages();

@@ -4,7 +4,7 @@ import { css } from '@emotion/react/macro';
 import IndicatorDot, { StatusType } from './IndicatorDot';
 import { Nickname } from './util';
 
-import { IContact } from 'backchannel';
+import { IContact } from '@inkandswitch/backchannel';
 
 type Props = {
   connected?: boolean;

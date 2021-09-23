@@ -64,7 +64,6 @@ export function RelaySettings() {
     backchannel
       .updateSettings({ ...old, ...settings })
       .then((_) => {
-        console.log('SUCCESS');
       })
       .catch((err) => {
         backchannel.updateSettings(old);

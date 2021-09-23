@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react/macro';
 
 import { color } from './tokens';
-import { EVENTS, ERROR } from 'backchannel';
+import { EVENTS, ERROR } from '@inkandswitch/backchannel';
 import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();

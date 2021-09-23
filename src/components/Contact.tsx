@@ -8,7 +8,7 @@ import { UnderlineInput, Toggle, ToggleWrapper, IconButton } from './';
 import { color } from './tokens';
 import CodeView from './CodeView';
 import { ReactComponent as HatPerson } from './icons/HatPerson.svg';
-import { ContactId, IContact } from 'backchannel';
+import { ContactId, IContact } from '@inkandswitch/backchannel';
 import Backchannel from '../backchannel';
 
 let backchannel = Backchannel();
@@ -27,7 +27,7 @@ export default function Contact({ contactId, backHref }: Props) {
   let [contact, setContact] = useState<IContact>(
     backchannel.db.getContactById(contactId)
   );
-  let [nickname, setNickname] = useState<string>(contact.moniker);
+  let [nickname, setNickname] = useState<string>(contact.name);
   let [tab, setTab] = useState<Tab>(Tab.Write);
   let [errorMsg, setErrorMsg] = useState('');
   let [, setLocation] = useLocation();
@@ -41,8 +41,8 @@ export default function Contact({ contactId, backHref }: Props) {
     try {
       // Set the avatar image
       let contact = await backchannel.editAvatar(contactId, imgData);
-      // Remove the moniker since we only want to show the avatar
-      contact = await backchannel.editMoniker(contactId, '');
+      // Remove the name since we only want to show the avatar
+      contact = await backchannel.editName(contactId, '');
       setContact(contact);
       canvasRef.current.resetCanvas();
       setLocation(`/mailbox/${contactId}`);
@@ -58,8 +58,8 @@ export default function Contact({ contactId, backHref }: Props) {
   async function handleSaveNicknameText(e) {
     e.preventDefault();
     try {
-      // Set the moniker
-      let contact = await backchannel.editMoniker(contactId, nickname);
+      // Set the name
+      let contact = await backchannel.editName(contactId, nickname);
       // Remove the avatar
       contact = await backchannel.editAvatar(contactId, null);
       setContact(contact);
@@ -126,7 +126,7 @@ export default function Contact({ contactId, backHref }: Props) {
                 `}
                 type="text"
                 onChange={handleChange}
-                defaultValue={contact ? contact.moniker : ''}
+                defaultValue={contact ? contact.name : ''}
                 placeholder="Contact nickname"
                 autoFocus
               />
@@ -170,7 +170,7 @@ export default function Contact({ contactId, backHref }: Props) {
             type="submit"
             form="input-nickname"
             icon={HatPerson}
-            disabled={nickname.length === 0}
+            disabled={nickname && nickname.length === 0}
           >
             Confirm nickname
           </IconButton>

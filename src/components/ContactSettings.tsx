@@ -7,7 +7,7 @@ import { TopBar, SettingsContent } from '.';
 import { Page, ContentWithTopNav, IconButton } from './';
 import TopBarNickname from './TopBarNickname';
 import Backchannel from '../backchannel';
-import { IContact, ContactId } from 'backchannel';
+import { IContact, ContactId } from '@inkandswitch/backchannel';
 import { ReactComponent as PersonSmall } from '../components/icons/PersonSmall.svg';
 import { ReactComponent as HatPerson } from '../components/icons/HatPerson.svg';
 import { ReactComponent as ExportSmall } from '../components/icons/ExportSmall.svg';

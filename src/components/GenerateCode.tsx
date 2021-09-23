@@ -11,10 +11,10 @@ import CodeView, {
   codeViewAnimation,
   useAnimation,
 } from './CodeView';
-import { CodeType, Key, ContactId } from 'backchannel';
+import { Key, ContactId } from '@inkandswitch/backchannel';
 import { ReactComponent as Copy } from './icons/Copy.svg';
 import Backchannel from '../backchannel';
-import { getNumericCode, splitCode } from '../codes'
+import { CodeType, getNumericCode, splitCode } from '../codes'
 
 let backchannel = Backchannel();
 

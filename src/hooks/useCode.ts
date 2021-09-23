@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Code } from 'backchannel';
+import { Code } from '@inkandswitch/backchannel';
 
 import { generateQRCode } from '../web';
 import useCountdown from '../hooks/useCountdown';
@@ -10,8 +10,8 @@ type QRCodeImage = string;
 /**
  * Get a connection code and its corresponding QR Code image string. Automatically refreshes every `refreshRateSec` seconds.
  *
- * @param {CodeType} codeType The code to accept
  * @param {number} timeout The refresh rate in seconds. Default is 60 seconds.
+ * @param {string} redeemUrlPath The path to where to redeem the code
  * @returns {Code} An invite code.
  * @returns {QRCodeImage} Stringified image of a QR Code that accepts the invite code.
  */
@@ -38,7 +38,6 @@ export default function useCode(
       setCode(code);
       setGeneratingCode(false);
       const url = getReedemURL(redeemUrlPath, code);
-      console.log('REDEEM URL', url);
       generateQRCode(url).then((qrCode) => setQRCode(qrCode));
       resetCountdown();
     }

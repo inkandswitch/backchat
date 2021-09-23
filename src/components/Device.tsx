@@ -13,7 +13,7 @@ import {
   TopBar,
   IconWithMessage,
 } from '.';
-import { EVENTS, ContactId, MessageType } from 'backchannel';
+import { EVENTS, ContactId, MessageType } from '@inkandswitch/backchannel';
 import { ReactComponent as Checkmark } from './icons/Checkmark.svg';
 import { ContentWithTopNav, SettingsContent } from './index';
 import DeviceCodeView from './DeviceCodeView';
@@ -132,7 +132,7 @@ export function UnlinkDevices() {
     setLoading(true);
     // send tombstones
     for (let device of backchannel.devices) {
-      backchannel.sendTombstone(device.id).then(() => {
+      backchannel.unlinkDevice(device.id).then(() => {
         onTombstone(device);
       });
     }

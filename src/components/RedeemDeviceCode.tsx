@@ -4,7 +4,7 @@ import { useLocation } from 'wouter';
 
 import { AnimationMode } from './CodeView';
 import DeviceCodeView, { DeviceCodeLoading } from './DeviceCodeView';
-import { Key, ContactId } from 'backchannel';
+import { Key, ContactId } from '@inkandswitch/backchannel';
 import Backchannel from '../backchannel';
 import { splitCode } from '../codes'
 
@@ -38,7 +38,6 @@ export default function RedeemDeviceCode() {
         setErrorMsg('');
         setLocation(`/device/${deviceId}`);
       } catch (err) {
-        console.log('got error', err);
         onError(err);
         setCode('');
       }

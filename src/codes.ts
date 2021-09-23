@@ -1,6 +1,11 @@
-import { Code } from 'backchannel';
+import { Code } from '@inkandswitch/backchannel';
 import randomBytes from 'randombytes';
 import wordlist from './wordlist_en.json'
+
+export enum CodeType {
+  WORDS = 'words',
+  NUMBERS = 'numbers',
+}
 
 export function splitCode(code: Code): [string, string] {
   let sanitizedCode = code.toLowerCase().trim();
@@ -9,6 +14,27 @@ export function splitCode(code: Code): [string, string] {
   let password = parts.join(' ');
   return [mailbox, password]
 }
+
+export function detectCodeType(code: string): CodeType {
+  let maybe = parseInt(code[0]);
+  if (isNaN(maybe)) return CodeType.WORDS;
+  else return CodeType.NUMBERS;
+}
+
+export function validCode(code: Code): boolean {
+  let codeType = detectCodeType(code);
+
+  switch (codeType) {
+    case CodeType.NUMBERS:
+      let sanitized = code.toLowerCase().trim().replaceAll(' ', '');
+      return sanitized.match(/[0-9]{9}/) !== null;
+    case CodeType.WORDS:
+      const RE = /[A-z]{3,5}( )[A-z]{3,5}( )[A-z]{3,5}/g;
+      let matched = code.toLowerCase().trim().match(RE);
+      return matched !== null;
+  }
+}
+
 
 /**
  * Create a one-time code for a new backchannel contact.

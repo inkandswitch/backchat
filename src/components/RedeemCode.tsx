@@ -9,11 +9,11 @@ import CodeView, {
   codeViewAnimation,
   useAnimation,
 } from './CodeView';
-import { CodeType, Key, ContactId } from 'backchannel';
+import { Key, ContactId } from '@inkandswitch/backchannel';
 import QRReader from './QRReader';
 import { ReactComponent as People } from './icons/People.svg';
 import Backchannel from '../backchannel';
-import { numericCodeToWords, splitCode } from '../codes';
+import * as codes from '../codes';
 
 let backchannel = Backchannel();
 
@@ -43,13 +43,13 @@ export default function RedeemCode() {
       if (animationMode === AnimationMode.Connecting) return;
       try {
         setAnimationMode(AnimationMode.Connecting);
-        let codeType = backchannel.detectCodeType(code);
+        let codeType = codes.detectCodeType(code);
 
-        if (codeType === CodeType.NUMBERS) {
-          code = numericCodeToWords(code);
+        if (codeType === codes.CodeType.NUMBERS) {
+          code = codes.numericCodeToWords(code);
         }
 
-        let [mailbox, password] = splitCode(code)
+        let [mailbox, password] = codes.splitCode(code)
         let key: Key = await backchannel.accept(mailbox, password, 5000);
 
         let cid: ContactId = await backchannel.addContact(key);
@@ -149,7 +149,7 @@ export default function RedeemCode() {
             icon={People}
             form="code-input"
             type="submit"
-            disabled={!backchannel.validCode(code)}
+            disabled={!codes.validCode(code)}
           >
             Add Contact
           </IconButton>

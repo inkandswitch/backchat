@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react/macro';
-import { IContact } from 'backchannel';
+import { IContact } from '@inkandswitch/backchannel';
 import { color } from './tokens';
 
 export function timestampToDate(timestamp: string): string {
@@ -22,8 +22,8 @@ export function Nickname({ contact }: { contact: IContact }) {
     );
   }
 
-  if (contact.moniker) {
-    return <>{contact.moniker}</>;
+  if (contact.name) {
+    return <>{contact.name}</>;
   }
 
   // No nickname was ever assigned, show placeholder

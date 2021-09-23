@@ -26,7 +26,7 @@ document.
 
 A contact card is a type of document that represents other users. The following fields are part of messages in the document 'content'. 
 
-- *moniker*. This is a name that represents the contact.
+- *name*. This is a name that represents the contact.
 - *last_seen (optional):* A timestamp representing the last (local clock) time this contact was seen.
 - *public_key* (*optional).* The public key of this contact. This public key could be used to provide end-to-end encryption in later versions of the application.
 
