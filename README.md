@@ -3,7 +3,7 @@
 THIS IS UNSUPPORTED RESEARCH SOFTWARE. IT HAS NOT HAD ANY KIND OF SECURITY
 OR CRYPTOGRAPHY REVIEW. DO NOT ATTEMPT TO USE THIS SOFTWARE TO STORE OR TRANSMIT SENSITIVE INFORMATION.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b91ac61c-abc1-40d0-9563-e05c189190ae/deploy-status)](https://app.netlify.com/sites/backchat/deploys) [![CI](https://github.com/inkandswitch/backchat/actions/workflows/ci.yml/badge.svg)](https://github.com/inkandswitch/backchat/actions)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b91ac61c-abc1-40d0-9563-e05c189190ae/deploy-status)](https://app.netlify.com/sites/backchat/deploys) 
 
 
 [Try it now!](https://backchat.netlify.app/)
