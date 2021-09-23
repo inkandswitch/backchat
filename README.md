@@ -3,24 +3,14 @@
 THIS IS UNSUPPORTED RESEARCH SOFTWARE. IT HAS NOT HAD ANY KIND OF SECURITY
 OR CRYPTOGRAPHY REVIEW. DO NOT ATTEMPT TO USE THIS SOFTWARE TO STORE OR TRANSMIT SENSITIVE INFORMATION.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b91ac61c-abc1-40d0-9563-e05c189190ae/deploy-status)](https://app.netlify.com/sites/gallant-lewin-1c93b0/deploys) [![CI](https://github.com/inkandswitch/backchannel/actions/workflows/ci.yml/badge.svg)](https://github.com/inkandswitch/backchannel/actions)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b91ac61c-abc1-40d0-9563-e05c189190ae/deploy-status)](https://app.netlify.com/sites/backchat/deploys) [![CI](https://github.com/inkandswitch/backchat/actions/workflows/ci.yml/badge.svg)](https://github.com/inkandswitch/backchat/actions)
 
 
-[Try it now!](https://gallant-lewin-1c93b0.netlify.app/)
+[Try it now!](https://backchat.netlify.app/)
 
-Backchat is an end-to-end encrypted instant messenger application that has no accounts, no central identity, and no namespaces. Backchat combines [SPAKE2](https://github.com/okdistribute/spake2-wasm) and [Petname systems](https://www.hpl.hp.com/techreports/2005/HPL-2005-148.pdf). We set out to build a digital identity system for collaborative applications that would:
-
-* leverage real-world relationships;
-* resist impersonation attacks;
-* adhere to local-first principles;
-* be secure and accessible.
-
-[Read more about Backchat in our paper](https://www.inkandswitch.com/backchannel)
+Backchat is an end-to-end encrypted instant messenger application that has no accounts, no central identity, and no namespaces. Backchat is an example that uses [Backchannel](https://github.com/inkandswitch/backchannel). Read more about this approach to digital identity in [the paper](https://www.inkandswitch.com/backchannel).
 
 ## Getting started
-
-* [Read the API docs](https://gallant-lewin-1c93b0.netlify.app/docs/api/)
-* [Contributing & Code of Conduct](docs/contributing.md)
 
 ```
 npm install
@@ -38,32 +28,6 @@ Then, you can build the javascript bundle which includes hotreloading.
 npm start
 ```
 
-## Viewing the Documentation
-
-The docs can be auto-generated locally. The following command outputs the generated documentation into
-`build/docs/api`. 
-
-```
-npm run build:docs
-```
-
-Then you can view the docs locally with an http-server, you can use something
-like the node `http-server`.
-
-```
-npm i -g http-server
-http-server build/docs/api
-```
-
-Or with npx:
-
-```
-npx http-server build/docs/api
-```
-
-You can then view the main documentation locally at http://localhost:port/classes/backend_backchannel.backchannel.html
-
-
 ## Testing
 
 Open two browser windows that are not in private browsing mode. They can be
@@ -75,46 +39,17 @@ same machine, you should open one of the tabs or windows at
 ```localhost:3000``` and the other at ```127.0.0.1:3000```. This will ensure
 that they both have their own isolated database.
 
-To run automated tests, 
-
-```
-npm run relay
-```
-
-and then
-
-```
-npm test
-```
-
 ## Deployment
 
 To deploy the minified production build, run
 
 ```npm run build```
 
-To build the api documentation, run
-
-```npm run build:docs```
-
-To build both the production build and the docs for deployment on a static
-server, run
-
-```npm run deploy```
-
 ## Contributors
 
-* Karissa McKelvey, @okdistribute, Lead 
+* Karissa Rae McKelvey, @okdistribute
 * Ben Royer, Design
 * Chris Sun, @daiyi, Frontend/UI
-
-## Advisors
-
-* [Cade Diehm](https://shiba.computer/)
-* Peter van Hardenberg, @pvh
-* سلمان الجماز, @saljam
-* Herb Caudill, @herbcaudill
-* Martin Kleppman, @ept
 
 # License
 

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
 	webpack: function (config, env) {
 		config.module.rules.forEach(rule => {
@@ -7,6 +8,7 @@ module.exports = {
 				}
 			});
 		});
+		config.plugins.push(new webpack.ContextReplacementPlugin(/spake2-wasm/))
 		return config
 	}
 }
